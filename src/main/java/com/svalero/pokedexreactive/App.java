@@ -1,8 +1,8 @@
-package com.svalero;
+package com.svalero.pokedexreactive;
 
 import java.io.IOException;
 
-import com.svalero.controller.AppController;
+import com.svalero.pokedexreactive.controller.AppController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
