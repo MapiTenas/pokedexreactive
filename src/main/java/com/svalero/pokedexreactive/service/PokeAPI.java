@@ -1,7 +1,5 @@
 package com.svalero.pokedexreactive.service;
 
-import java.util.List;
-
 import com.svalero.pokedexreactive.model.Pokemon.PokemonInfo;
 import com.svalero.pokedexreactive.model.Pokemon.PokemonType;
 
@@ -15,7 +13,7 @@ public interface PokeAPI {
    Observable<PokemonType> getType(@Path("type") String type);
 
    @GET("/api/v2/pokemon/{pokemon}")
-   Observable<List<PokemonInfo>> getPokemon(@Path("pokemon") String name);
+   Observable<PokemonInfo> getPokemon(@Path("pokemon") String name);
    
    
 }

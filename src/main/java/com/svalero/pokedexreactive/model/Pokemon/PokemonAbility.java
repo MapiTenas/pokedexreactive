@@ -1,7 +1,5 @@
 package com.svalero.pokedexreactive.model.Pokemon;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Abilities {
-    List<Ability> ability;
-    
+public class PokemonAbility {
+    Ability ability;
+    Integer slot;
 }

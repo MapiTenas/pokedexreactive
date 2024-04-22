@@ -11,7 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class PokemonType {
-
     List<PokemonSlot> pokemon;
-    
 }

@@ -3,7 +3,6 @@ package com.svalero.pokedexreactive.service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.svalero.pokedexreactive.model.Pokemon.PokemonInfo;
-import com.svalero.pokedexreactive.model.Pokemon.PokemonType;
 
 import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
@@ -35,11 +34,13 @@ public class PokemonService {
         this.pokeAPI = retrofit.create(PokeAPI.class);    
     }
 
-
-    public Observable<PokemonInfo> getType(String inputType) {
-        return this.pokeAPI.getType(inputType)
-                .flatMap(pokeType -> Observable.fromIterable(pokeType.getPokemon()))
-                .map(pokemonSlot -> pokemonSlot.getPokemon());
+    public Observable<PokemonInfo> getPokemons(String inputType) {
+        Observable<String> pokemonNamesObservable = this.pokeAPI.getType(inputType)
+            .flatMap(pokeType -> Observable.fromIterable(pokeType.getPokemon()))
+            .map(pokemonSlot -> pokemonSlot.getPokemon().getName());
+        Observable<PokemonInfo> pokemonInfoObservable = pokemonNamesObservable
+            .flatMap(pokemonName -> this.pokeAPI.getPokemon(pokemonName));
+        return pokemonInfoObservable;
     }
     
 }

@@ -24,10 +24,10 @@ public class PokemonTask extends Task<Integer> {
 
         Consumer<PokemonInfo> user = (pokemonInfo) -> {
             Thread.sleep(250);
-            Platform.runLater(()-> this.pokeNames.add(pokemonInfo.getName()));
+            Platform.runLater(()-> this.pokeNames.add(pokemonInfo.getId() + " - " + pokemonInfo.getName() + " - " + pokemonInfo.showAllAbilities()));
         };
 
-        pokemonService.getType(requestedPokemon).subscribe(user);
+        pokemonService.getPokemons(requestedPokemon).subscribe(user);
         return null;
 
     }
