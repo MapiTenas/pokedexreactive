@@ -10,11 +10,11 @@ import javafx.concurrent.Task;
 public class PokemonTask extends Task<Integer> {
 
     private String requestedPokemon;
-    private ObservableList<String> pokeNames;
+    private ObservableList<PokemonInfo> pokemons;
 
-    public PokemonTask (String requestedPokemon, ObservableList<String> pokeNames) {
+    public PokemonTask (String requestedPokemon, ObservableList<PokemonInfo> pokemons) {
         this.requestedPokemon = requestedPokemon;
-        this.pokeNames = pokeNames;   
+        this.pokemons = pokemons;   
     }
 
 
@@ -23,8 +23,9 @@ public class PokemonTask extends Task<Integer> {
         PokemonService pokemonService = new PokemonService();
 
         Consumer<PokemonInfo> user = (pokemonInfo) -> {
+            pokemonInfo.setDataForTable();
             Thread.sleep(250);
-            Platform.runLater(()-> this.pokeNames.add(pokemonInfo.getId() + " - " + pokemonInfo.getName() + " - " + pokemonInfo.showAllAbilities()));
+            Platform.runLater(()-> this.pokemons.add(pokemonInfo));
         };
 
         pokemonService.getPokemons(requestedPokemon).subscribe(user);

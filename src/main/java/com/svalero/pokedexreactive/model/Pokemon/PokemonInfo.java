@@ -15,13 +15,18 @@ public class PokemonInfo {
     String name;
     Sprites sprites;
     ArrayList<PokemonAbility> abilities;
+    String abilitiesString;
+    String frontSprite;
+    String backSprite;
 
-    public String showAllAbilities() {
+    public void setDataForTable() {
         ArrayList<String> abilityNames = new ArrayList<String>();
         for(PokemonAbility slot : this.getAbilities()){
             abilityNames.add(slot.getAbility().getName());
         }
-        return abilityNames.toString();
+        this.abilitiesString = abilityNames.toString().replaceAll("\\[|\\]", "");
+        this.frontSprite = this.sprites.getFront_default();
+        this.backSprite = this.sprites.getBack_default();
     }
 
 }

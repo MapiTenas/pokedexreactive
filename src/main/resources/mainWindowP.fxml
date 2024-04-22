@@ -2,13 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="buttonSearch" layoutX="407.0" layoutY="86.0" mnemonicParsing="false" onAction="#searchPokemon" prefHeight="26.0" prefWidth="69.0" text="Search" />
-      <ListView fx:id="pokeListView" layoutX="128.0" layoutY="166.0" prefHeight="263.0" prefWidth="539.0" />
       <ComboBox fx:id="pokeTypeComboBox" layoutX="247.0" layoutY="87.0" prefWidth="150.0" />
+      <TableView fx:id="pokeTableView" layoutX="140.0" layoutY="175.0" prefHeight="200.0" prefWidth="533.0">
+        <columns>
+          <TableColumn fx:id="frontColumn" prefWidth="59.20001220703125" text="Front" />
+          <TableColumn fx:id="nameColumn" prefWidth="98.39994812011719" text="Name" />
+          <TableColumn fx:id="numberColumn" prefWidth="110.39996337890625" text="Pokedex Number" />
+          <TableColumn fx:id="abilitiesColumn" prefWidth="195.20001220703125" text="Abilities" />
+          <TableColumn fx:id="backColumn" prefWidth="69.5999755859375" text="Back" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
