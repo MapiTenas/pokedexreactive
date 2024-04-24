@@ -62,7 +62,7 @@ public class PokemonController implements Initializable {
         
         this.pokemons = FXCollections.observableArrayList();
         System.out.println("Inicio");
-        this.pokeTableView.setItems(this.pokemons); //Binds the list observable to the listview
+        this.pokeTableView.setItems(this.pokemons); //Binds the list observable to the tableview
         
         System.out.println("Busco " + requestedType);
         pokemonTask = new PokemonTask(requestedType, this.pokemons);

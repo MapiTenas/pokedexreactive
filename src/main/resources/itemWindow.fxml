@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="itemTableView" layoutX="57.0" layoutY="45.0" prefHeight="262.0" prefWidth="634.0">
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="84.80001068115234" text="Item Name" />
+            <TableColumn fx:id="attributeColumn" prefWidth="140.0" text="Attributes" />
+            <TableColumn fx:id="effectColumn" prefWidth="350.4000549316406" text="Effect" />
+            <TableColumn fx:id="imageColumn" prefWidth="57.59995117187498" text="Image" />
+         </columns>
+      </TableView>
+      <ProgressBar fx:id="progressBar" layoutX="155.0" layoutY="331.0" prefHeight="18.0" prefWidth="290.0" progress="0.0" />
+      <Label fx:id="labelProgressStatus" layoutX="455.0" layoutY="331.0" prefHeight="18.0" prefWidth="40.0" />
+      <Button fx:id="deleteItemButton" layoutX="534.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteItem" text="Delete" />
+   </children>
+</AnchorPane>

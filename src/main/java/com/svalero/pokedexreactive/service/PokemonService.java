@@ -2,6 +2,7 @@ package com.svalero.pokedexreactive.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.svalero.pokedexreactive.model.Items.Item;
 import com.svalero.pokedexreactive.model.Pokemon.PokemonInfo;
 
 import io.reactivex.Observable;
@@ -49,6 +50,24 @@ public class PokemonService {
             .map(pokemonSlot -> pokemonSlot.getPokemon().getName())
             .toList()
             .map(pokemonNamesList -> pokemonNamesList.size())
+            .toObservable();
+    }
+
+    public Observable<Item> getItems(String inputType){
+        Observable<String> itemNamesObservable = this.pokeAPI.getItemCategory(inputType)
+            .flatMap(itemType -> Observable.fromIterable(itemType.getItems()))
+            .map(item -> item.getName());
+        Observable<Item> itemInfoObservable = itemNamesObservable
+            .flatMap(itemName -> this.pokeAPI.getItem(itemName));
+        return itemInfoObservable;
+    }
+
+    public Observable<Integer> getTotalItemCount(String inputType) {
+        return this.pokeAPI.getItemCategory(inputType)
+            .flatMap(itemType -> Observable.fromIterable(itemType.getItems()))
+            .map(item -> item.getName())
+            .toList()
+            .map(itemNamesList -> itemNamesList.size())
             .toObservable();
     }
     

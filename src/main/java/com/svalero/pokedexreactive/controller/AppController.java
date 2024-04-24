@@ -26,26 +26,20 @@ public class AppController implements Initializable {
     private Button buttonSearch;
     @FXML
     private TabPane tabPaneResults;
+    @FXML
+    private ComboBox<String> itemCategoryComboBox;
+    @FXML
+    private Button buttonSearchItems;
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
         //I load the list of constants into the combobox
-        ObservableList<String> options = FXCollections.observableArrayList(Constants.pokeTypes);
-        pokeTypeComboBox.setItems(options);
+        ObservableList<String> pokeOptions = FXCollections.observableArrayList(Constants.pokeTypes);
+        pokeTypeComboBox.setItems(pokeOptions);
+        ObservableList<String> itemOptions = FXCollections.observableArrayList(Constants.itemTypes);
+        itemCategoryComboBox.setItems(itemOptions);
         tabPaneResults.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
     }
-
-    /*@FXML
-    public void searchPokemon(ActionEvent event){
-        this.pokemons = FXCollections.observableArrayList();
-        System.out.println("Inicio");
-        String requestedType = pokeTypeComboBox.getValue().toString();
-        this.pokeTableView.setItems(this.pokemons); //Binds the list observable to the listview
-        
-        System.out.println("Busco " + requestedType);
-        pokemonTask = new PokemonTask(requestedType, this.pokemons);
-        new Thread(pokemonTask).start();
-    }*/
 
     @FXML 
     public void searchPokemon(ActionEvent event){
@@ -60,7 +54,26 @@ public class AppController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     } 
+
+
+    @FXML
+    public void searchItems(ActionEvent event){
+        String requestedCategory = itemCategoryComboBox.getValue().toString();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/itemWindow.fxml"));
+        ItemController itemController = new ItemController(requestedCategory);
+        loader.setController(itemController);
+        try {
+            AnchorPane itemPane = loader.load();
+            tabPaneResults.getTabs().add(new Tab(requestedCategory, itemPane));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
+
+    
+
+    
 
 }

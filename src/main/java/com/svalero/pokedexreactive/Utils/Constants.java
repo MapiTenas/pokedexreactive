@@ -28,4 +28,27 @@ public class Constants {
         add("fairy");
     }});
 
+    public static final List<String> itemTypes = Collections.unmodifiableList(
+        new ArrayList<String>() {{
+            add("stat-boosts");
+            add("effort-drop");
+            add("medicine");
+            add("other");
+            add("in-a-pinch");
+            add("picky-healing");
+            add("type-protection");
+            add("baking-only");
+            add("colectibles");
+            add("evolution");
+            add("spelunking");
+            add("held-items");
+            add("choice");
+            add("effort-training");
+            add("bad-held-items");
+            add("training");
+            add("type-enhancement");
+            add("event-items");
+        }});
+    
+
 }
