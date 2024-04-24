@@ -9,8 +9,10 @@ import com.svalero.pokedexreactive.task.PokemonTask;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
@@ -35,6 +37,8 @@ public class PokemonController implements Initializable {
     private ProgressBar progressBar;
     @FXML
     private Label labelProgressStatus;
+    @FXML
+    private Button deletePokeButton;
     
     private ObservableList<PokemonInfo> pokemons;
     private String requestedType;
@@ -69,6 +73,11 @@ public class PokemonController implements Initializable {
         });
         new Thread(pokemonTask).start();
 
+    }
+
+    @FXML
+    private void deletePokemon(ActionEvent event) {
+        pokeTableView.getItems().removeAll(pokeTableView.getSelectionModel().getSelectedItems());
     }
 
 }
