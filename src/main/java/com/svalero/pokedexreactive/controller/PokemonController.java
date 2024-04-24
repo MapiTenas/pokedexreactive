@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -29,6 +31,10 @@ public class PokemonController implements Initializable {
     private TableColumn<PokemonInfo, String> abilitiesColumn;
     @FXML
     private TableColumn<PokemonInfo, String> backColumn;
+    @FXML
+    private ProgressBar progressBar;
+    @FXML
+    private Label labelProgressStatus;
     
     private ObservableList<PokemonInfo> pokemons;
     private String requestedType;
@@ -56,6 +62,11 @@ public class PokemonController implements Initializable {
         
         System.out.println("Busco " + requestedType);
         pokemonTask = new PokemonTask(requestedType, this.pokemons);
+        progressBar.progressProperty().unbind();
+        progressBar.progressProperty().bind(pokemonTask.progressProperty());
+        pokemonTask.messageProperty().addListener((observableValue, oldValue, newValue) -> {
+            labelProgressStatus.setText(newValue);
+        });
         new Thread(pokemonTask).start();
 
     }

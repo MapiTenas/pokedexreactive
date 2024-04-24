@@ -42,5 +42,14 @@ public class PokemonService {
             .flatMap(pokemonName -> this.pokeAPI.getPokemon(pokemonName));
         return pokemonInfoObservable;
     }
+
+    public Observable<Integer> getTotalPokemonCount(String inputType) {
+        return this.pokeAPI.getType(inputType)
+            .flatMap(pokeType -> Observable.fromIterable(pokeType.getPokemon()))
+            .map(pokemonSlot -> pokemonSlot.getPokemon().getName())
+            .toList()
+            .map(pokemonNamesList -> pokemonNamesList.size())
+            .toObservable();
+    }
     
 }
