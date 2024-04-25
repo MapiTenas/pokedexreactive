@@ -9,17 +9,16 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="pokeTableView" layoutX="57.0" layoutY="45.0" prefHeight="262.0" prefWidth="634.0">
+      <TableView fx:id="itemTableView" layoutX="57.0" layoutY="45.0" prefHeight="262.0" prefWidth="634.0">
          <columns>
-            <TableColumn fx:id="frontColumn" prefWidth="59.20001220703125" text="Front" />
-            <TableColumn fx:id="nameColumn" prefWidth="98.39994812011719" text="Name" />
-            <TableColumn fx:id="numberColumn" prefWidth="110.39996337890625" text="Pokedex Number" />
-            <TableColumn fx:id="abilitiesColumn" prefWidth="306.3999938964844" text="Abilities" />
-            <TableColumn fx:id="backColumn" prefWidth="58.4000244140625" text="Back" />
+            <TableColumn fx:id="nameColumn" prefWidth="84.80001068115234" text="Item Name" />
+            <TableColumn fx:id="attributeColumn" prefWidth="140.0" text="Attributes" />
+            <TableColumn fx:id="effectColumn" prefWidth="350.4000549316406" text="Effect" />
+            <TableColumn fx:id="imageColumn" prefWidth="57.59995117187498" text="Image" />
          </columns>
       </TableView>
       <ProgressBar fx:id="progressBar" layoutX="155.0" layoutY="331.0" prefHeight="18.0" prefWidth="290.0" progress="0.0" />
       <Label fx:id="labelProgressStatus" layoutX="455.0" layoutY="331.0" prefHeight="18.0" prefWidth="40.0" />
-      <Button fx:id="deletePokeButton" layoutX="534.0" layoutY="327.0" mnemonicParsing="false" onAction="#deletePokemon" text="Delete" />
+      <Button fx:id="deleteItemButton" layoutX="534.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteItem" text="Delete" />
    </children>
 </AnchorPane>

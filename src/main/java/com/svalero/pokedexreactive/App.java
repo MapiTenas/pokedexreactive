@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 public class App extends Application {
@@ -24,10 +25,13 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/mainWindowP.fxml"));
         loader.setController(new AppController());
         AnchorPane anchorPane = loader.load();
+        Image appIcon = new Image("/appicon.png");
+        
 
         Scene scene = new Scene(anchorPane);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Reactive Pokedex");
+        primaryStage.getIcons().add(appIcon);
         primaryStage.show();
     }
 
