@@ -20,6 +20,7 @@
       </TableView>
       <ProgressBar fx:id="progressBar" layoutX="155.0" layoutY="331.0" prefHeight="18.0" prefWidth="290.0" progress="0.0" />
       <Label fx:id="labelProgressStatus" layoutX="455.0" layoutY="331.0" prefHeight="18.0" prefWidth="40.0" />
-      <Button fx:id="deletePokeButton" layoutX="534.0" layoutY="327.0" mnemonicParsing="false" onAction="#deletePokemon" text="Delete" />
+      <Button fx:id="deletePokeButton" layoutX="495.0" layoutY="327.0" mnemonicParsing="false" onAction="#deletePokemon" text="Delete" />
+      <Button fx:id="downloadPokeButton" layoutX="556.0" layoutY="327.0" mnemonicParsing="false" onAction="#downloadInfo" text="Download" />
    </children>
 </AnchorPane>

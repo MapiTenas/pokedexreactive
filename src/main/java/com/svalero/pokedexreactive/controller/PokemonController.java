@@ -1,6 +1,12 @@
 package com.svalero.pokedexreactive.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import com.svalero.pokedexreactive.Utils.SpriteCell;
@@ -12,6 +18,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -39,7 +46,9 @@ public class PokemonController implements Initializable {
     private Label labelProgressStatus;
     @FXML
     private Button deletePokeButton;
-    
+    @FXML
+    private Button downloadPokeButton;
+
     private ObservableList<PokemonInfo> pokemons;
     private String requestedType;
     private PokemonTask pokemonTask;
@@ -78,6 +87,31 @@ public class PokemonController implements Initializable {
     @FXML
     private void deletePokemon(ActionEvent event) {
         pokeTableView.getItems().removeAll(pokeTableView.getSelectionModel().getSelectedItems());
+    }
+
+    @FXML
+    private void downloadInfo(ActionEvent event) {
+        ObservableList<PokemonInfo> data = pokeTableView.getItems();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
+        String dateTimeString = now.format(formatter);
+        File file = new File("pokemon_" + requestedType + "_" + dateTimeString + "_data.csv");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write("Nombre; Numero Pokedex; Habilidades\n");    
+            
+            for (PokemonInfo pokemon : data) {
+                String row = String.format("%s; %s; %s\n", pokemon.getName(), pokemon.getId(), pokemon.getAbilitiesString());
+                writer.write(row);
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("The information has been saved.");
+                alert.show();
+        
+        } catch (IOException e) {
+            // TODO: handle exception
+        }
+
     }
 
 }
