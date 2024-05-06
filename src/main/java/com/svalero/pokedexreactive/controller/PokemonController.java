@@ -105,11 +105,13 @@ public class PokemonController implements Initializable {
                 writer.write(row);
             }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setContentText("The information has been saved.");
-                alert.show();
+            alert.setContentText("The information has been saved.");
+            alert.show();
         
         } catch (IOException e) {
-            // TODO: handle exception
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(e.getMessage());
+            alert.show();
         }
 
     }
