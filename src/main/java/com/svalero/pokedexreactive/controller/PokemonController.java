@@ -68,7 +68,9 @@ public class PokemonController implements Initializable {
         backColumn.setCellValueFactory(new PropertyValueFactory<>("backSprite"));
         frontColumn.setCellFactory(col -> new SpriteCell<>());
         backColumn.setCellFactory(col -> new SpriteCell<>());
-        
+        deletePokeButton.setDisable(true);
+        downloadPokeButton.setDisable(true);
+
         this.pokemons = FXCollections.observableArrayList();
         System.out.println("Inicio");
         this.pokeTableView.setItems(this.pokemons); //Binds the list observable to the tableview
@@ -79,6 +81,10 @@ public class PokemonController implements Initializable {
         progressBar.progressProperty().bind(pokemonTask.progressProperty());
         pokemonTask.messageProperty().addListener((observableValue, oldValue, newValue) -> {
             labelProgressStatus.setText(newValue);
+            if (newValue.endsWith("100 %")){
+                deletePokeButton.setDisable(false);
+                downloadPokeButton.setDisable(false);
+            }  
         });
         new Thread(pokemonTask).start();
 

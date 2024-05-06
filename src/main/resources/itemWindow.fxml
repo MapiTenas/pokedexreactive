@@ -17,9 +17,9 @@
             <TableColumn fx:id="imageColumn" prefWidth="57.59995117187498" text="Image" />
          </columns>
       </TableView>
-      <ProgressBar fx:id="progressBar" layoutX="155.0" layoutY="331.0" prefHeight="18.0" prefWidth="290.0" progress="0.0" />
-      <Label fx:id="labelProgressStatus" layoutX="455.0" layoutY="331.0" prefHeight="18.0" prefWidth="40.0" />
-      <Button fx:id="deleteItemButton" layoutX="469.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteItem" text="Delete" />
-      <Button fx:id="downloadItemButton" layoutX="537.0" layoutY="327.0" mnemonicParsing="false" onAction="#downloadInfo" text="Download" />
+      <ProgressBar fx:id="progressBar" layoutX="132.0" layoutY="331.0" prefHeight="18.0" prefWidth="290.0" progress="0.0" />
+      <Label fx:id="labelProgressStatus" layoutX="438.0" layoutY="330.0" prefHeight="18.0" prefWidth="40.0" />
+      <Button fx:id="deleteItemButton" layoutX="495.0" layoutY="327.0" mnemonicParsing="false" onAction="#deleteItem" text="Delete" />
+      <Button fx:id="downloadItemButton" layoutX="563.0" layoutY="327.0" mnemonicParsing="false" onAction="#downloadInfo" text="Download" />
    </children>
 </AnchorPane>

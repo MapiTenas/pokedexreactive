@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 
 import com.svalero.pokedexreactive.Utils.SpriteCell;
 import com.svalero.pokedexreactive.model.Items.Item;
-import com.svalero.pokedexreactive.model.Pokemon.PokemonInfo;
 import com.svalero.pokedexreactive.task.ItemTask;
 
 import javafx.collections.FXCollections;
@@ -63,6 +62,8 @@ public class ItemController implements Initializable {
         effectColumn.setCellValueFactory(new PropertyValueFactory<>("effectString"));
         imageColumn.setCellValueFactory(new PropertyValueFactory<>("defaultSprite"));
         imageColumn.setCellFactory(col -> new SpriteCell<>());
+        deleteItemButton.setDisable(true);
+        downloadItemButton.setDisable(true);
 
         this.items = FXCollections.observableArrayList();
         System.out.println("Inicio");
@@ -74,6 +75,10 @@ public class ItemController implements Initializable {
         progressBar.progressProperty().bind(itemTask.progressProperty());
         itemTask.messageProperty().addListener((observableValue, oldValue, newValue) -> {
             labelProgressStatus.setText(newValue);
+            if (newValue.endsWith("100 %")){
+                deleteItemButton.setDisable(false);
+                downloadItemButton.setDisable(false);
+            }
         });
         new Thread(itemTask).start();
     }
