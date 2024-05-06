@@ -16,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class AppController implements Initializable {
@@ -30,6 +32,8 @@ public class AppController implements Initializable {
     private ComboBox<String> itemCategoryComboBox;
     @FXML
     private Button buttonSearchItems;
+    @FXML
+    private ImageView pokedexLogo;
 
     @Override
     public void initialize (URL location, ResourceBundle resources) {
@@ -39,6 +43,7 @@ public class AppController implements Initializable {
         ObservableList<String> itemOptions = FXCollections.observableArrayList(Constants.itemTypes);
         itemCategoryComboBox.setItems(itemOptions);
         tabPaneResults.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
+        pokedexLogo.setImage(new Image(getClass().getResourceAsStream("/Pokedexlogo.png")));    
     }
 
     @FXML 
